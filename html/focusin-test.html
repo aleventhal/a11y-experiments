@@ -1,0 +1,20 @@
+<div id="msg-onfocus" tabindex="0">
+  Will highlight when onfocus text is tabbed to
+</div>
+
+<div id="msg-onfocusin" tabindex="0">
+  Will highlight when tabbed to
+</div>
+
+<script>
+document.getElementById('msg-onfocus').addEventListener('focus', function() {
+  console.log('focus');
+  document.getElementById('msg-onfocus').style.backgroundColor = 'green';
+});
+
+document.getElementById('msg-onfocusin').addEventListener('focusin', function() {
+  console.log('focusin');
+  document.getElementById('msg-onfocusin').style.backgroundColor = 'green';
+});
+
+</script>
