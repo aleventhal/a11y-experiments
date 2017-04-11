@@ -18,7 +18,8 @@
 <script>
 document.getElementById('dynamic-outer').addEventListener('focus', function() {
   setTimeout(function() {
-    document.getElementById('dynamic-inner').setAttribute('tabindex', '0');
+    // document.getElementById('dynamic-inner').setAttribute('tabindex', '0');
+    document.getElementById('dynamic-inner').tabIndex = 0;
   }, 0);
 });
 
