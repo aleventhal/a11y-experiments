@@ -1,0 +1,23 @@
+<h1>Statically set</h1>
+<p tabindex="0">
+  Outer tabbable item
+  <span tabindex="0">
+    Inner tabbable item
+  </span>
+</p>
+
+<h1>Dynamically set inner tabIndex</h1>
+<p tabindex="0" id="dynamic-outer">
+  Outer tabbable item
+  <span id="dynamic-inner">
+    Inner tabbable item
+  </span>
+</p>
+
+
+<script>
+document.getElementById('dynamic-outer').addEventListener('focusin', function() {
+  document.getElementById('dynamic-inner').tabIndex = 0;
+});
+
+</script>
