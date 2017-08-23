@@ -1,0 +1,15 @@
+<button id="ok">ok</button>
+<button id="toggle">toggle</button>
+<p id="p">0</p>
+<script>
+  var state = false;
+  document.getElementById('toggle').addEventListener('click', function(evt) {
+      state = !state;
+    document.getElementById('ok').disabled = state;
+    console.log(state);
+    }, true);
+  var counter = 0;
+  document.getElementById('ok').addEventListener('click', function(evt) {
+    document.getElementById('p').innerText = ++ counter;
+  });
+  </script>

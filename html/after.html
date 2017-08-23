@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <title>VoiceOver alert weirdness</title>
+    <style type="text/css">
+    button:focus:after {
+      content: '';
+      outline: solid 1px #000;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    </style>
+  </head>
+  <body>
+    <div tabindex="0" role="alertdialog" aria-labelledby=":n">
+  <span id=":n" role="heading">Confirm the thing?</span>
+  <div>
+    <button name="cancel">Cancel</button>
+    <button name="ok">Confirm</button>
+  </div>
+    </div>
+  </body>
+</html>

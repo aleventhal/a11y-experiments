@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<p>Hello! We like pets</p>
+<p id="foo">
+Cat
+</p>
+<ul>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+</ul>
+<button id="changeBtn">Change</button>
+<button id="button2">Big Change X</button>
+</body>
+<script>
+var isCat = true;
+function changeIt() {
+  isCat = !isCat;
+  const fooElement = document.getElementById('foo');
+  fooElement.innerText = isCat ? 'Cat' : 'Dog';
+  fooElement.setAttribute('data-cat', isCat);
+  fooElement.setAttribute('class', 'cat-' + isCat);
+  buttonElem.setAttribute('class', 'cat-' + isCat);
+}
+var buttonElem = document.getElementById('changeBtn');
+buttonElem.addEventListener('click', changeIt);
+
+function bigChange() {
+  document.getElementById('foo').innerHTML =
+  '<input type="text" value="" placeholder="Animal">';
+}
+var button2Elem = document.getElementById('button2');
+button2Elem.addEventListener('click', bigChange);
+</script>
+</html>

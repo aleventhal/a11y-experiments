@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en-GB" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8" />
+	<title>Picture Source replacing Image ALT</title>
+</head>
+<body>
+
+<p>&lt;picture&gt;:
+	<picture>
+		<source
+			sizes="100vw"
+			srcset="./200.webp 200w,
+					./400.webp 400w"
+			type="image/webp" />
+		<img
+			src="./200.jpg" width="200" height="200" alt="x"
+			sizes="100vw"
+			srcset="./200.jpg 200w,
+					./400.jpg 400w" />
+	</picture>
+</p>
+
+<p>&lt;img&gt;:
+		<img
+			src="./200.jpg" width="200" height="200" alt="x"
+			sizes="100vw"
+			srcset="./200.jpg 200w,
+					./400.jpg 400w" />
+</p>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<style>
+[role="grid"] span { display: inline-block; width: 50px; border: 2px solid green; }
+[role="grid"] span:focus { outline: 3px solid blue; }
+.extra-wrapper { display: inline-block; }
+</style>
+<input>
+<div role="grid" id="grid1">
+  <div role="row">
+     <span role="columnheader" tabindex="0" id="cell00">
+       Stuff
+     </span>
+     <span role="columnheader" tabindex="-1" id="cell01">
+        111
+     </span>
+     <span role="columnheader" tabindex="-1" id="cell02">
+        222
+     </span>
+  </div>
+  <div role="row">
+     <span role="gridcell" tabindex="-1" id="cell10">
+        AAA
+     </span>
+     <span role="gridcell" tabindex="-1" id="cell11">
+        Cell#1
+     </span>
+     <span role="gridcell" tabindex="-1" id="cell12">
+        Cell#2
+     </span>
+  </div>
+  <div role="row">
+     <span role="rowheader" tabindex="-1" id="cell20">
+        BBB
+     </span>
+     <span role="gridcell" tabindex="-1" id="cell21">
+        Cell#1
+     </span>
+     <div class="extra-wrapper">
+       <span role="gridcell" tabindex="-1" id="cell22">
+          Cell#2
+       </span>
+     <div>
+  </div>
+</div>
+<script>
+var MAX_ROWS = 3;
+var MAX_COLS = 3;
+function onKeyDown(keyEvent) {
+  // Must be unmodified key
+  if (keyEvent.shiftPressed || keyEvent.ctrlPressed || keyEvent.altPressed ||
+    keyEvent.metaPressed) {
+    return;
+  }
+  // Must have focus
+  var fo = document.activeElement;
+  if (!fo) {
+    return;
+  }
+  // Focus must be cell
+  var id = fo.id;
+  if (id.substr(0,4) !== 'cell') {
+    return;
+  }
+  // Must be directional key
+  var rowDir = 0, colDir = 0;
+  switch (keyEvent.key) {
+    case 'ArrowLeft': colDir = -1; break;
+    case 'ArrowRight': colDir = 1; break;
+    case 'ArrowUp': rowDir = -1; break;
+    case 'ArrowDown': rowDir = 1; break;
+    default: return;
+  }
+
+  // Must have row and column number
+  var rowNum = parseInt(id.substr(4,1));
+  var colNum = parseInt(id.substr(5,1))
+  if (rowNum < 0 || rowNum >= MAX_ROWS || colNum < 0 || colNum >= MAX_COLS)
+    return;
+
+  var newRow = (rowNum + rowDir + MAX_ROWS) % MAX_ROWS;
+  var newCol = (colNum + colDir + MAX_COLS) % MAX_COLS;
+  var newFo = document.getElementById('cell' + newRow + '' + newCol);
+  if (!newFo) {
+    return;
+  }
+  fo.tabIndex = -1;
+  newFo.tabIndex = 0;
+  newFo.focus();
+}
+
+document.getElementById('grid1').addEventListener('keydown', onKeyDown);
+</script>
